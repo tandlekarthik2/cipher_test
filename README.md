@@ -1,7 +1,7 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/wokwi_test/badge.svg) ![](../../workflows/fpga/badge.svg)
 
 # Tiny Tapeout Wokwi Project Template
-
+This project implements a tiny 4-bit XOR-based encryption/decryption logic block for TinyTapeout with Wokwi simulation support.
 - [Read the documentation for project](docs/info.md)
 
 ## What is Tiny Tapeout?
