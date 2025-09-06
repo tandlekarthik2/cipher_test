@@ -1,10 +1,10 @@
 # Tiny Tapeout project information (Wokwi project)
 project:
-  wokwi_id:     0       # Set this to the ID of your Wokwi project (the number from the project's URL)
-  title:        ""      # Project title
-  author:       ""      # Your name
+  wokwi_id:     441371294480368641       # Set this to the ID of your Wokwi project (the number from the project's URL)
+  title:        "Mini 4-bit Encryption/Decryption Logic (XOR Stream Cipher)"      # Project title
+  author:       "Tandale Karthik"      # Your name
   discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  ""      # One line description of what your project does
+  description:  "This project implements a tiny 4-bit XOR-based encryption/decryption logic block for TinyTapeout with Wokwi simulation support."      # One line description of what your project does
   language:     "Wokwi" # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
 
@@ -16,24 +16,24 @@ project:
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
 pinout:
   # Inputs
-  ui[0]: ""
-  ui[1]: ""
-  ui[2]: ""
-  ui[3]: ""
-  ui[4]: ""
-  ui[5]: ""
-  ui[6]: ""
-  ui[7]: ""
+  ui[0]: "Data_in_3"
+  ui[1]: "Data_in_2"
+  ui[2]: "Data_in_1"
+  ui[3]: "Data_in_0"
+  ui[4]: "key1"
+  ui[5]: "key0"
+  ui[6]: "Enable"
+  ui[7]: "ENC_DEC"
 
   # Outputs
-  uo[0]: ""
-  uo[1]: ""
-  uo[2]: ""
-  uo[3]: ""
-  uo[4]: ""
-  uo[5]: ""
-  uo[6]: ""
-  uo[7]: ""
+  uo[0]: "Data_out_3"
+  uo[1]: "Data_out_2"
+  uo[2]: "Data_out_1"
+  uo[3]: "Data_out_0"
+  uo[4]: "Done"
+  uo[5]: "Debug_2"
+  uo[6]: "Debug_1"
+  uo[7]: "Debug_0"
 
   # Bidirectional pins
   uio[0]: ""
