@@ -4,7 +4,7 @@ project:
   title:        "Mini 4-bit Encryption/Decryption Logic (XOR Stream Cipher)"      # Project title
   author:       "Tandale Karthik"      # Your name
   discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  "This project implements a tiny 4-bit XOR-based encryption/decryption logic block for TinyTapeout with Wokwi simulation support."      # One line description of what your project does
+  description:  "This project implements a tiny 4-bit XOR-based encryption/decryption logic block using barrel shifter for TinyTapeout with Wokwi simulation support."      # One line description of what your project does
   language:     "Wokwi" # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
 
