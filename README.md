@@ -1,23 +1,23 @@
 ## Mini 4-bit XOR Cipher with Barrel Shifter
-----------------------------------------------------
+
 ## 📌 What is this Project?
----------------------------
+
 A 4-bit encryption/decryption circuit built with XOR logic and a 4-bit barrel shifter.
 
 Designed for the TinyTapeout platform (fits within one tile).
 
 Demonstrates basic cryptography in hardware using simple gates and multiplexers.
-------------------------
+
 ## 🎯 Why is it Used?
--------------------------
+
 As an educational demo of how encryption can be implemented in digital logic.
 
 To show the principles of confusion (XOR with key) and diffusion (bit rotation).
 
 As a TinyTapeout tapeout candidate for learning ASIC design flows.
-----------------------------
+
 ## ⚙️ How it Works
---------------------------
+
 Inputs (ui_in):
 
 [3:0] → Data (plaintext when encrypting, ciphertext when decrypting).
@@ -61,9 +61,9 @@ Outputs (uo_out):
 | 0100 | 10  | Dec  | 0001       | R2    | 1011   |
 | 1111 | 01  | Enc  | 1010       | L1    | 0101   |
 | 0101 | 01  | Dec  | 1010       | R1    | 1111   |
--------------------------------
+
 ## 🧪 How to Test
--------------------------
+
 Connect switches to inputs (ui_in).
 
 SW0–SW3 → Data
