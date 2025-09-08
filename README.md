@@ -1,38 +1,87 @@
-![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/wokwi_test/badge.svg) ![](../../workflows/fpga/badge.svg)
+## Mini 4-bit XOR Cipher with Barrel Shifter
+----------------------------------------------------
+## 📌 What is this Project?
+---------------------------
+A 4-bit encryption/decryption circuit built with XOR logic and a 4-bit barrel shifter.
 
-# Tiny Tapeout Wokwi Project Template
-This project implements a tiny 4-bit XOR-based encryption/decryption logic block for TinyTapeout with Wokwi simulation support.
-- [Read the documentation for project](docs/info.md)
+Designed for the TinyTapeout platform (fits within one tile).
 
-## What is Tiny Tapeout?
+Demonstrates basic cryptography in hardware using simple gates and multiplexers.
+------------------------
+## 🎯 Why is it Used?
+-------------------------
+As an educational demo of how encryption can be implemented in digital logic.
 
-Tiny Tapeout is an educational project that aims to make it easier and cheaper than ever to get your digital and analog designs manufactured on a real chip.
+To show the principles of confusion (XOR with key) and diffusion (bit rotation).
 
-To learn more and get started, visit https://tinytapeout.com.
+As a TinyTapeout tapeout candidate for learning ASIC design flows.
+----------------------------
+## ⚙️ How it Works
+--------------------------
+Inputs (ui_in):
 
-## Wokwi Projects
+[3:0] → Data (plaintext when encrypting, ciphertext when decrypting).
 
-Edit the [info.yaml](info.yaml) and change the `wokwi_id` to the ID of your Wokwi project. You can find the ID in the URL of your project, it's the big number after `wokwi.com/projects/`.
+[5:4] → 2-bit Key (also used as rotate amount).
 
-The GitHub action will automatically fetch the digital netlist from Wokwi and build the ASIC files.
+[6] → Mode Select (0 = Encrypt, 1 = Decrypt).
 
-## Enable GitHub actions to build the results page
+[7] → Enable.
 
-- [Enabling GitHub Pages](https://tinytapeout.com/faq/#my-github-action-is-failing-on-the-pages-part)
+Process Flow:
 
-## Resources
+Encryption (enc_dec=0):
 
-- [FAQ](https://tinytapeout.com/faq/)
-- [Digital design lessons](https://tinytapeout.com/digital_design/)
-- [Learn how semiconductors work](https://tinytapeout.com/siliwiz/)
-- [Join the community](https://tinytapeout.com/discord)
-- [Build your design locally](https://www.tinytapeout.com/guides/local-hardening/)
+Data → MUX → XOR with expanded key {k1,k0,k1,k0}.
 
-## What next?
+Result → Barrel Shifter (rotate left by key value).
 
-- [Submit your design to the next shuttle](https://app.tinytapeout.com/).
-- Edit [this README](README.md) and explain your design, how it works, and how to test it.
-- Share your project on your social network of choice:
-  - LinkedIn [#tinytapeout](https://www.linkedin.com/search/results/content/?keywords=%23tinytapeout) [@TinyTapeout](https://www.linkedin.com/company/100708654/)
-  - Mastodon [#tinytapeout](https://chaos.social/tags/tinytapeout) [@matthewvenn](https://chaos.social/@matthewvenn)
-  - X (formerly Twitter) [#tinytapeout](https://twitter.com/hashtag/tinytapeout) [@tinytapeout](https://twitter.com/tinytapeout)
+MUX → Output (ciphertext).
+
+Decryption (enc_dec=1):
+
+Cipher → Barrel Shifter (rotate right by key value).
+
+Result → MUX → XOR with expanded key.
+
+MUX → Output (plaintext).
+
+Outputs (uo_out):
+
+[3:0] → Result (ciphertext/plaintext).
+
+[4] → Done (mirrors enable).
+
+[7:5] → Debug {enc_dec, key[1], key[0]}.
+
+## 🧾 Example Truth Table
+| Data | Key | Mode | XOR Result | Shift | Output |
+| ---- | --- | ---- | ---------- | ----- | ------ |
+| 1011 | 10  | Enc  | 0001       | L2    | 0100   |
+| 0100 | 10  | Dec  | 0001       | R2    | 1011   |
+| 1111 | 01  | Enc  | 1010       | L1    | 0101   |
+| 0101 | 01  | Dec  | 1010       | R1    | 1111   |
+-------------------------------
+## 🧪 How to Test
+-------------------------
+Connect switches to inputs (ui_in).
+
+SW0–SW3 → Data
+
+SW4–SW5 → Key
+
+SW6 → Encrypt/Decrypt select
+
+SW7 → Enable
+
+Connect LEDs to outputs (uo_out).
+
+LED0–LED3 → Result (cipher/plaintext)
+
+LED4 → Done flag
+
+LED5–LED7 → Debug outputs
+
+Encrypt: Set Data + Key, mode=0, Enable=1 → observe cipher on LEDs.
+
+Decrypt: Feed cipher as new input, same key, mode=1, Enable=1 → LEDs restore original data.
