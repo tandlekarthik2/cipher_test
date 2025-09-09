@@ -1,3 +1,5 @@
+![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/wokwi_test/badge.svg) ![](../../workflows/fpga/badge.svg)
+
 ## Mini 4-bit XOR Cipher with Barrel Shifter
 This project implements a compact encryption and decryption circuit designed for the TinyTapeout platform. The design demonstrates how simple digital logic blocks such as XOR gates, multiplexers, and a barrel shifter can be combined to create a working cipher. The goal is to provide a lightweight, hardware-efficient encryption mechanism that can fit inside the strict area limits of TinyTapeout while still showing the principles of cryptography.
 
